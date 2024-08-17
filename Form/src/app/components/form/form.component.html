@@ -1,11 +1,17 @@
 <form #userForm="ngForm">
     <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Email address</label>
-      <input type="email" class="form-control" id="exampleInputEmail1">
+      <label for="exampleInputEmail1" class="form-label">Email address<b [class.text-danger]="userForm.controls['email']?.errors?.['required'] && userForm.controls['email']?.touched">*</b></label>
+      <input type="email" class="form-control" id="exampleInputEmail1" name="email" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" ngModel required>
+      <small *ngIf="userForm.controls['email']?.errors?.['required'] && userForm.controls['email']?.touched" class="text-danger">
+        Email is a required field
+    </small>
+    <small *ngIf="userForm.controls['email']?.errors?.['pattern'] && userForm.controls['email']?.touched" class="text-danger">
+      Please enter a valid email
+  </small>
     </div>
   
     <div class="form-group mb-3">
-        <label for="exampleInputAge" class="form-label">Age</label>
+        <label for="exampleInputAge" class="form-label">Age<b [class.text-danger]="userForm.controls['age']?.errors?.['required'] && userForm.controls['age']?.touched">*</b></label>
         <input type="number" class="form-control" id="exampleInputAge" min="16" required name="age" ngModel>
         <small *ngIf="userForm.controls['age']?.errors?.['min'] && userForm.controls['age']?.touched" class="text-danger">
           Age must be at least 16
