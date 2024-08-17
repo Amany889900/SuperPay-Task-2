@@ -8,11 +8,29 @@ import { Component } from '@angular/core';
 export class FormComponent {
   formData = {
     cardNum: '',
+    expNum: ''
   };
 formatedInput(digits:string){
   const formattedNumber = digits.replace(/(\d{4})(?=\d)/g, '$1 ');
   this.formData.cardNum = formattedNumber.trim();
 }
+
+formatDate(digits:string){
+  const formattedDate = digits.replace(/^(\d{2})(?=\d)/, '$1/');
+  this.formData.expNum = formattedDate.trim();
+}
+expired(digits: string) {
+  const [month, year] = digits.split('/').map(Number);
+  const currentDate = new Date();
+  const currentMonth = currentDate.getMonth() + 1; // getMonth() returns 0-11
+  const currentYear = currentDate.getFullYear() % 100;
+
+  if (month < 1 || month > 12 || year < currentYear || (year === currentYear && month < currentMonth)) {
+    return true; // Expired
+  }
+  return false; // Valid
+}
+
 
   isValid(digits:string) {
     let sum = 0;
