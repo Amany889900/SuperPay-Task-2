@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 
 import { FormComponent } from './components/form/form.component';
 import { FrameComponent } from './components/frame/frame.component';
+import {FormsModule} from '@angular/forms'
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { FrameComponent } from './components/frame/frame.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [
     provideClientHydration()

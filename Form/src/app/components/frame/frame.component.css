@@ -8,5 +8,5 @@
 .card{
     border: 1px solid rgb(80, 111, 177);
     border-radius: 10px;
-    
+    width:500px;
 }
