@@ -28,9 +28,9 @@
 
       <div class="mb-3">
         <label for="exampleInputCardNumber" class="form-label">Card Number</label>
-        <input type="number" class="form-control" id="exampleInputCardNumber">
-  
+        <input placeholder="XXXX-XXXX-XXXX-XXXX" (blur)="isValid(cardNum.value)" (change)="isValid(cardNum.value)" type="text" class="form-control" id="exampleInputCardNumber" name="cardNum" ngModel #cardNum>
       </div>
+      <small  class="text-danger" [class.d-none]="isValid || userForm.controls['cardNum']?.untouched">Please enter a valid card number</small>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 
