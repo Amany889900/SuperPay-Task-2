@@ -1,0 +1,12 @@
+.cardContainer{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    height: 100vh;
+    
+    }
+.card{
+    border: 1px solid rgb(80, 111, 177);
+    border-radius: 10px;
+    
+}
