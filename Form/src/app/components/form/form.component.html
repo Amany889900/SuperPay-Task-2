@@ -1,5 +1,5 @@
 <form #userForm="ngForm">
-    <div class="mb-3">
+    <div class="form-group mb-3">
       <label for="exampleInputEmail1" class="form-label">Email address<b [class.text-danger]="userForm.controls['email']?.errors?.['required'] && userForm.controls['email']?.touched">*</b></label>
       <input type="email" class="form-control" id="exampleInputEmail1" name="email" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" ngModel required>
       <small *ngIf="userForm.controls['email']?.errors?.['required'] && userForm.controls['email']?.touched" class="text-danger">
@@ -21,16 +21,19 @@
     </small>
       </div>
 
-      <div class="mb-3">
+      <div class="form-group mb-3">
+        <label for="exampleInputCardNumber" class="form-label">Card Number</label>
+        <input [(ngModel)]="formData.cardNum" (input)="formatedInput(userForm.controls['cardNum'].value)" placeholder="XXXX-XXXX-XXXX-XXXX" (blur)="isValid(userForm.controls['cardNum'].value)" (change)="isValid(userForm.controls['cardNum'].value)" type="text" class="form-control" id="exampleInputCardNumber" name="cardNum" #cardNum>
+        <small  class="text-danger" [class.d-none]="isValid(userForm.controls['cardNum'].value) || userForm.controls['cardNum']?.untouched">Please enter a valid card number</small>
+      </div>
+     
+
+      <div class="form-group mb-3">
         <label for="exampleInputExpiry" class="form-label">Expiry date</label>
         <input type="date" class="form-control" id="exampleInputExpiry">
       </div>
 
-      <div class="mb-3">
-        <label for="exampleInputCardNumber" class="form-label">Card Number</label>
-        <input placeholder="XXXX-XXXX-XXXX-XXXX" (blur)="isValid(cardNum.value)" (change)="isValid(cardNum.value)" type="text" class="form-control" id="exampleInputCardNumber" name="cardNum" ngModel #cardNum>
-      </div>
-      <small  class="text-danger" [class.d-none]="isValid || userForm.controls['cardNum']?.untouched">Please enter a valid card number</small>
+     
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 
