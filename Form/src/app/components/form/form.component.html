@@ -31,10 +31,10 @@
       <div class="form-group mb-3">
         <label for="exampleInputExpiry" class="form-label">Expiry date</label>
         <input type="text" class="form-control" id="exampleInputExpiry" placeholder="mm/yy" name="expNum" (input)="formatDate(userForm.controls['expNum'].value)" [(ngModel)]="formData.expNum">
-        <small class="text-danger" [class.d-none]="!expired(userForm.controls['expNum'].value)">Please enter a valid date</small>
+        <small class="text-danger" [class.d-none]="!expired(userForm.controls['expNum'].value) || userForm.controls['expNum'].untouched">Please enter a valid date</small>
       </div>
 
      
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary" [disabled]="!isValid(userForm.controls['cardNum'].value) || expired(userForm.controls['expNum'].value) || userForm.form.invalid">Submit</button>
   </form>
 
