@@ -8,6 +8,7 @@ import { FormComponent } from './components/form/form.component';
 import { FrameComponent } from './components/frame/frame.component';
 import {FormsModule} from '@angular/forms'
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormArray } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +20,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormControl,
+    FormGroup,
+    FormArray
   ],
   providers: [
     provideClientHydration()
